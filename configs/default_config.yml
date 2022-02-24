@@ -1,7 +1,7 @@
 # Random seed to reproduce the results
 SEED: 999
 # Directory to data
-DATA_ROOT: "./train_data/"
+DATA_ROOT: "./train_data/images/"
 # Path to annotation file (should be in coco object detection format)
 COCO_PATH: "./train_data/annotations.json"
 # Directory to validation data root (optional)
