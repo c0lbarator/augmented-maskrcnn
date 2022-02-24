@@ -1,0 +1,106 @@
+# Random seed to reproduce the results
+SEED: 999
+# Directory to data
+DATA_ROOT: ""
+# Path to annotation file (should be in coco object detection format)
+COCO_PATH: ""
+# Directory to validation data root (optional)
+DATA_ROOT_VAL: ""
+# Path to coco annotation file for validation data (optional)
+COCO_PATH_VAL: ""
+# Training model checkpoints and losses will be saved in the folder experiments/EXPERIMENT_NAME/
+EXPERIMENT_NAME: "exp1"
+# Path to the model to be used during predict
+MODEL_PATH: "experiments/exp1/maskrcnn-best.pt"
+
+# Optimizer name ("sgd", "adam", "adabound", "lamb" or "radam")
+OPTIMIZER_NAME: "sgd"
+# For more info on the optimizer params:
+# https://pytorch.org/docs/stable/optim.html
+# https://pytorch-optimizer.readthedocs.io/en/latest/?badge=latest
+OPTIMIZER_WEIGHT_DECAY: 0.0005
+OPTIMIZER_MOMENTUM: 0.9
+OPTIMIZER_BETAS: [0.9, 0.999]
+OPTIMIZER_EPS: 0.00000001
+OPTIMIZER_AMSGRAD: False
+OPTIMIZER_ADABOUND_GAMMA: 0.001
+OPTIMIZER_ADABOUND_FINAL_LR: 0.1
+# Optimizer learning rate
+LEARNING_RATE: 0.0001
+# Optimizer learning rate schedule parameters
+LEARNING_RATE_STEP_SIZE: 3
+LEARNING_RATE_GAMMA: 0.1
+
+# Number of trainable (not frozen) resnet layers starting from final block (btw 0-5)
+TRAINABLE_BACKBONE_LAYERS: 3
+# Will be used while generating anchors for a set of feature maps and image sizes
+RPN_ANCHOR_SIZES: [32, 64, 128, 256, 512]
+RPN_ANCHOR_ASPECT_RATIOS: [0.5, 1.0, 2.0]
+# Number of proposals to keep before applying NMS during training
+RPN_PRE_NMS_TOP_N_TRAIN: 2000
+# Number of proposals to keep before applying NMS during testing
+RPN_PRE_NMS_TOP_N_TEST: 1000
+# Number of proposals to keep after applying NMS during training
+RPN_POST_NMS_TOP_N_TRAIN: 2000
+# Number of proposals to keep after applying NMS during testing
+RPN_POST_NMS_TOP_N_TEST: 1000
+# NMS threshold used for postprocessing the RPN proposals
+RPN_NMS_THRESH: 0.7
+# Minimum IoU between the anchor and the GT box so that they can be considered as positive during training of the RPN
+RPN_FG_IOU_THRESH: 0.7
+# Maximum IoU between the anchor and the GT box so that they can be considered as negative during training of the RPN
+RPN_BG_IOU_THRESH: 0.3
+# Maximum number of detection per image, default is 100, make it lower if having cuda memory issues
+BOX_DETECTIONS_PER_IMAGE: 50
+
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.LongestMaxSize
+LONGESTMAXSIZE_P: 1
+LONGESTMAXSIZE_MAXSIZE: 768
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.RandomSizedBBoxSafeCrop
+RANDOMSIZEDBBOXSAFECROP_P: 0
+RANDOMSIZEDBBOXSAFECROP_HEIGHT: 768
+RANDOMSIZEDBBOXSAFECROP_WIDTH: 768
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.ShiftScaleRotate
+SHIFTSCALEROTATE_P: 0
+SHIFTSCALEROTATE_SHIFTLIMIT: 0.0625
+SHIFTSCALEROTATE_SCALELIMIT: 0.1
+SHIFTSCALEROTATE_ROTATELIMIT: 45
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.HorizontalFlip
+HORIZONTALFLIP_P: 0
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.RandomRotate90
+RANDOMROTATE90_P: 0
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.RandomBrightnessContrast
+RANDOMBRIGHTNESSCONTRAST_P: 0
+RANDOMBRIGHTNESSCONTRAST_BRIGHTNESSLIMIT: 0.2
+RANDOMBRIGHTNESSCONTRAST_CONTRASTLIMIT: 0.2
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.RandomGamma
+RANDOMGAMMA_P: 0
+RANDOMGAMMA_GAMMALIMIT: [80, 120]
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.HueSaturationValue
+HUESATURATIONVALUE_P: 0
+HUESATURATIONVALUE_HUESHIFTLIMIT: 20
+HUESATURATIONVALUE_SATSHIFTLIMIT: 30
+HUESATURATIONVALUE_VALSHIFTLIMIT: 20
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.MotionBlur
+MOTIONBLUR_P: 0
+MOTIONBLUR_BLURLIMIT: [3, 7]
+# https://albumentations.ai/docs/api_reference/augmentations/transforms/#albumentations.augmentations.transforms.JpegCompression
+JPEGCOMPRESSION_P: 0
+JPEGCOMPRESSION_QUALITYLOWER: 20
+JPEGCOMPRESSION_QUALITYUPPER: 95
+
+# Number of iterations to print/log
+LOG_FREQ: 40
+# COCO AP logging type ("overall", "category_based")
+COCO_AP_TYPE: "category_based"
+# Train split rate of the dataset
+TRAIN_SPLIT_RATE: 0.8
+# Batch size:
+BATCH_SIZE: 1
+# Total epoch number
+NUM_EPOCH: 10
+# Device to perform train/inference (cuda:0, cpu etc.)
+DEVICE: "cuda:0"
+# Thread number to be used for dataloading
+NUM_WORKERS: 0
+
